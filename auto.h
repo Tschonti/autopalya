@@ -3,12 +3,14 @@
 
 class Auto {
     int seb;
+    bool voltmar;
     static const int max_seb;
     static const int lassulas_esely;
 
 public:
-    Auto(bool allo) : seb(allo ? 0 : max_seb/2) {}
-
+    Auto(bool allo);
+    bool volt_mar() const { return voltmar; }
+    inline void megvolt() { voltmar = !voltmar; }
     int sebesseg_valtozas(int kovi_auto);
 };
 #endif //AUTO_H

@@ -10,12 +10,13 @@ class Auto_tarolo {
     Auto** autok;
 
 public:
-    Auto_tarolo(int hossz, int autok);
+    Auto_tarolo(int hossz, int autok_szama);
     Auto* operator[](int i) const;
     ~Auto_tarolo();
 
     size_t get_hossz() const { return hossz; }
     int get_autok() const { return autok_szama; }
+    void autok_visszaallit() const;
 
     void csere(int regi_ind, int uj_ind);
     void hossz_no(int uj_hossz);
