@@ -17,9 +17,11 @@ int Auto::sebesseg_valtozas(int kovi_auto) {
     if (kovi_auto < seb) {
         seb = kovi_auto;
     }
+#ifndef MYTEST
     if ((std::rand() % 100) < lassulas_esely && seb > 0) {
         seb--;
     }
+#endif
     voltmar = true;
     return seb;
 }

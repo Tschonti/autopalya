@@ -24,6 +24,7 @@ public:
     void autok_no(int uj_autok);
     void autok_csokken(int uj_autok);
 
+    int ureshelyek();
     void rajzol() const;
 };
 

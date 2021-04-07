@@ -5,10 +5,14 @@ Auto_tarolo::Auto_tarolo(int hossz, int autok_szama) : hossz(hossz), autok_szama
         autok[i] = NULL;
     }
 
+#ifdef MYTEST
     //fisher-yates hiányzik!!!
     for (size_t i = 0; i < autok_szama; i++) {
         autok[i] = new Auto(true);
     }
+#else
+
+#endif
 }
 
 Auto* Auto_tarolo::operator[](int i) const {
@@ -52,6 +56,16 @@ void Auto_tarolo::autok_no(int uj_autok) {
 
 void Auto_tarolo::autok_csokken(int uj_autok) {
 
+}
+
+int Auto_tarolo::ureshelyek() {
+    int sum = 0;
+    for (size_t i = 0; i < hossz; i++) {
+        if (autok[i] == NULL){
+            sum++;
+        }
+    }
+    return sum;
 }
 
 

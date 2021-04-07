@@ -10,7 +10,7 @@ class Auto {
 public:
     Auto(bool allo);
     bool volt_mar() const { return voltmar; }
-    inline void megvolt() { voltmar = !voltmar; }
+    inline void megvolt() { voltmar = false; }
     int sebesseg_valtozas(int kovi_auto);
 };
 #endif //AUTO_H

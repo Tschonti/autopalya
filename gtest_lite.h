@@ -387,8 +387,8 @@ std::ostream& EXPECTREGEXP(E exp, S str, int match, const char *err,  const char
         << "\n** " << rhs << ": " << (err == NULL ? std::string("\"") + str + std::string("\"") : err)
         << "\n** " << m << ": " << match << "/" << cnt << std::endl;
 }
-#else
-#error "EXPEXTREGEXP requires compiler and library support for the ISO C++ 2011 standard."
+//#else
+//#error "EXPEXTREGEXP requires compiler and library support for the ISO C++ 2011 standard."
 #endif
 
 /// segéd sablonok a relációkhoz.
