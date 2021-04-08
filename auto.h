@@ -12,5 +12,9 @@ public:
     bool volt_mar() const { return voltmar; }
     inline void megvolt() { voltmar = false; }
     int sebesseg_valtozas(int kovi_auto);
+
+#ifdef MYTEST
+    int get_seb() const { return seb; }
+#endif
 };
 #endif //AUTO_H

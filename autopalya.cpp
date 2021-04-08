@@ -1,6 +1,6 @@
 #include "autopalya.h"
 
-int Autopalya::kovi_auto(int auto_ind) {
+int Autopalya::kovi_auto(int auto_ind) const {
     int mozgo_ind = auto_ind + 1;
     while (sav[mozgo_ind % sav.get_hossz()] == NULL) {
         mozgo_ind++;
@@ -17,7 +17,7 @@ void Autopalya::ciklus() {
                 try {
                     sav.csere(i, (i + ujseb) % sav.get_hossz());
                 } catch (std::invalid_argument& e) {
-                    std::cout << "ajjajj" << std::endl;
+                    std::cerr << "Ezeket a cellakat nem szabadna cserelni!" << std::endl;
                 }
 
             }

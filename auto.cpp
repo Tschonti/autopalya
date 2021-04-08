@@ -4,11 +4,7 @@
 const int Auto::max_seb = 5;
 const int Auto::lassulas_esely = 15;
 
-Auto::Auto(bool allo) : seb(0), voltmar(false) {
-    if (!allo) {
-        seb = max_seb / 2;
-    }
-}
+Auto::Auto(bool allo): seb(allo ? 0 : max_seb/2), voltmar(false) {}
 
 int Auto::sebesseg_valtozas(int kovi_auto) {
     if (seb < max_seb) {

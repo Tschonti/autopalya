@@ -8,10 +8,10 @@
 class Autopalya {
     Auto_tarolo sav;
 
-    int kovi_auto(int auto_ind);
+    int kovi_auto(int auto_ind) const;
 public:
     Autopalya(int hossz, int autok) : sav(hossz, autok) {
-        std::srand(std::time(NULL));
+        sav.rajzol();
     }
 
     void ciklus();

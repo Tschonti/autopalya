@@ -1,4 +1,8 @@
 #include "auto_tarolo.h"
+#ifndef MYTEST
+#include <cstdlib>
+#include <ctime>
+#endif
 
 Auto_tarolo::Auto_tarolo(int hossz, int autok_szama) : hossz(hossz), autok_szama(autok_szama), autok(new Auto*[hossz]) {
     for (size_t i = 0; i < hossz; i++) {
@@ -6,12 +10,16 @@ Auto_tarolo::Auto_tarolo(int hossz, int autok_szama) : hossz(hossz), autok_szama
     }
 
 #ifdef MYTEST
-    //fisher-yates hiányzik!!!
+    // Fisher-yates (véletlen szórás) nélkül
     for (size_t i = 0; i < autok_szama; i++) {
         autok[i] = new Auto(true);
     }
 #else
-
+    int *permutacio = fisher_yates(hossz);
+    for (int i = 0; i < autok_szama; i++) {
+        autok[permutacio[i]] = new Auto(true);
+    }
+    delete[] permutacio;
 #endif
 }
 
@@ -87,3 +95,20 @@ void Auto_tarolo::rajzol() const {
     }
     std::cout << std::endl;
 }
+#ifndef MYTEST
+int* fisher_yates(int hossz) {
+    std::srand(std::time(NULL));
+    int *szamok = new int[hossz];
+    for (int i = 0; i < hossz; i++) {
+        szamok[i] = i;
+    }
+
+    for (int i = hossz - 1; i >= 1; i--) {
+        int j = std::rand() % (i + 1);
+        int temp = szamok[j];
+        szamok[j] = szamok[i];
+        szamok[i] = temp;
+    }
+    return szamok;
+}
+#endif

@@ -27,5 +27,7 @@ public:
     int ureshelyek();
     void rajzol() const;
 };
-
+#ifndef MYTEST
+int* fisher_yates(int hossz);
+#endif
 #endif //AUTO_TAROLO_H
