@@ -23,7 +23,7 @@ Auto* Auto_tarolo::operator[](int i) const {
  * Destruktor, ami felszabadítja a rendszer összes autóját, majd magát a tömböt is
  */
 Auto_tarolo::~Auto_tarolo() {
-    for (size_t i = 0; i < hossz; i++) {
+    for (int i = 0; i < hossz; i++) {
         delete autok[i];
     }
     delete[] autok;
@@ -33,7 +33,7 @@ Auto_tarolo::~Auto_tarolo() {
  * A tömb minden autóját visszaállítja abba az állapotba, hogy lehessen rajtuk a ciklust végezni.
  */
 void Auto_tarolo::autok_visszaallit() const {
-    for (size_t i = 0; i < hossz; i++) {
+    for (int i = 0; i < hossz; i++) {
         if (autok[i] != NULL) {
             autok[i]->megvolt();
         }
@@ -62,10 +62,10 @@ void Auto_tarolo::csere(int regi_ind, int uj_ind) {
  */
 void Auto_tarolo::hossz_no(int uj_cellak) {
     Auto** uj = new Auto*[hossz + uj_cellak];
-    for (size_t i = 0; i < hossz; i++) {
+    for (int i = 0; i < hossz; i++) {
         uj[i] = autok[i];
     }
-    for (size_t i = hossz; i < uj_cellak + hossz; i++) {
+    for (int i = hossz; i < uj_cellak + hossz; i++) {
         uj[i] = NULL;
     }
     hossz += uj_cellak;
@@ -82,11 +82,11 @@ void Auto_tarolo::hossz_no(int uj_cellak) {
  */
 void Auto_tarolo::hossz_csokken(int torlendo_cellak) {
     Auto** uj = new Auto*[hossz - torlendo_cellak];
-    for (size_t i = 0; i < hossz - torlendo_cellak; i++) {
+    for (int i = 0; i < hossz - torlendo_cellak; i++) {
         uj[i] = autok[i];
     }
     int visszaallitando_auto = 0;
-    for (size_t i = hossz - torlendo_cellak; i < hossz; i++) {
+    for (int i = hossz - torlendo_cellak; i < hossz; i++) {
         if (autok[i] != NULL) {
             visszaallitando_auto++;
             delete autok[i];
@@ -168,7 +168,7 @@ void Auto_tarolo::autok_csokken(int torlendo_autok) {
  */
 int Auto_tarolo::ureshelyek() {
     int sum = 0;
-    for (size_t i = 0; i < hossz; i++) {
+    for (int i = 0; i < hossz; i++) {
         if (autok[i] == NULL){
             sum++;
         }
@@ -183,11 +183,11 @@ int Auto_tarolo::ureshelyek() {
  * Végül egy újabb "-" sorral zárja.
  */
 void Auto_tarolo::rajzol() const {
-    for (size_t i = 0; i < hossz; i++) {
+    for (int i = 0; i < hossz; i++) {
         std::cout << "-";
     }
     std::cout << std::endl;
-    for (size_t i = 0; i < hossz; i++) {
+    for (int i = 0; i < hossz; i++) {
         if (autok[i] == NULL) {
             std::cout << " ";
         } else {
@@ -195,7 +195,7 @@ void Auto_tarolo::rajzol() const {
         }
     }
     std::cout << std::endl;
-    for (size_t i = 0; i < hossz; i++) {
+    for (int i = 0; i < hossz; i++) {
         std::cout << "-";
     }
     std::cout << std::endl;

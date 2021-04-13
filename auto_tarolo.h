@@ -8,7 +8,7 @@
  * Auto objektumokat tároló osztály.
  */
 class Auto_tarolo {
-    size_t hossz;       /**< A tömb, azaz az autópálya hossza (cellákban) */
+    int hossz;       /**< A tömb, azaz az autópálya hossza (cellákban) */
     int autok_szama;    /**< Autók száma az autópályán, azaz hány nem üres cella van a rendszerben */
     Auto** autok;       /**< Az Auto*-eket tartalmazó tömb */
 
@@ -23,7 +23,7 @@ public:
     Auto* operator[](int i) const;
     ~Auto_tarolo();
 
-    size_t get_hossz() const { return hossz; }
+    int get_hossz() const { return hossz; }
     int get_autok() const { return autok_szama; }
     void autok_visszaallit() const;
 
