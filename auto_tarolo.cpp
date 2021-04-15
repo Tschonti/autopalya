@@ -123,6 +123,7 @@ int int_hasonlit(const void* p1, const void* p2) {
  */
 void Auto_tarolo::autok_no(int uj_autok) {
     bool allo = autok_szama == 0;
+#ifndef MYTEST
     int *permutacio = fisher_yates(hossz - autok_szama);
     qsort(permutacio, uj_autok, sizeof(int), int_hasonlit);
 
@@ -137,6 +138,15 @@ void Auto_tarolo::autok_no(int uj_autok) {
     }
     autok_szama += uj_autok;
     delete[] permutacio;
+#else
+    for (int tombindex = 0, letett_autok = 0; tombindex < hossz && letett_autok < uj_autok; tombindex++) {
+        if (autok[tombindex] == NULL) {
+            autok[tombindex] = new Auto(allo);
+            letett_autok++;
+        }
+    }
+    autok_szama += uj_autok;
+#endif
 }
 
 /**
@@ -146,6 +156,7 @@ void Auto_tarolo::autok_no(int uj_autok) {
  * @param torlendo_autok Ennyi autót töröl a rendszerből.
  */
 void Auto_tarolo::autok_csokken(int torlendo_autok) {
+#ifndef MYTEST
     int *permutacio = fisher_yates(autok_szama);
     qsort(permutacio, torlendo_autok, sizeof(int), int_hasonlit);
 
@@ -160,20 +171,16 @@ void Auto_tarolo::autok_csokken(int torlendo_autok) {
     }
     autok_szama -= torlendo_autok;
     delete[] permutacio;
-}
-
-/**
- * Megszámolja, hogy hány üres cella van a tömbben.
- * @return Üres cellák száma
- */
-int Auto_tarolo::ureshelyek() {
-    int sum = 0;
-    for (int i = 0; i < hossz; i++) {
-        if (autok[i] == NULL){
-            sum++;
+#else
+    for (int tombindex = 0, torolt_autok = 0; tombindex < hossz && torolt_autok < torlendo_autok; tombindex++) {
+        if (autok[tombindex] != NULL) {
+            delete autok[tombindex];
+            autok[tombindex] = NULL;
+            torolt_autok++;
         }
     }
-    return sum;
+    autok_szama -= torlendo_autok;
+#endif
 }
 
 /**

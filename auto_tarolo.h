@@ -33,7 +33,6 @@ public:
     void autok_no(int uj_autok);
     void autok_csokken(int torlendo_autok);
 
-    int ureshelyek();
     void rajzol() const;
 };
 #ifndef MYTEST
