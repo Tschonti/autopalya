@@ -17,19 +17,21 @@ public:
 
     /**
      * Volt-e már ez az autó az adott ciklusban?
+     * A voltmar tagváltozó getter függvénye.
      * @return Igaz, ha már volt ebben a ciklusban.
      */
     bool volt_mar() const { return voltmar; }
 
     /**
      * Megváltoztatja az autó állapotát arra, hogy még nem volt ebben a ciklusban.
+     * A voltmar tagváltozó setter függvénye, ami mindig hamisra állítja az értékét, hiszen kívülről csak ebben az irányban használt.
      * (Új ciklus kezdetén használandó)
      */
     inline void megvolt() { voltmar = false; }
 
     int sebesseg_valtozas(int kovi_auto);
 
-#ifdef MYTEST
+#ifdef CPORTA
     int get_seb() const { return seb; }
 #endif
 };

@@ -7,13 +7,14 @@
 
 /**
  * Ez a felhasználó felé is publikus osztály. Ha egy autópályát szeretne modellezni a programjában,
- * akkor egy ilyen objektumot kell készíteni, paraméterként megadva az autópálya hosszát és az autók számát.
+ *  akkor egy Autopalya objektumot kell készíteni. A másik két osztályt ez az osztály tartalmazza, és csak a belső működéshez szükségesek.
  * Az osztály feladata a feladatkiírásbanban megadott ciklusok végrehajtása és a másik két osztály kezelése.
  */
 class Autopalya {
     Auto_tarolo sav;    /**< Az autópálya egyetlen sávja, ami egy Auto_tarolo objektum, ebben tárolódnak az autók. */
 
     int kovi_auto(int auto_ind) const;
+    void autok_visszaallit() const;
 public:
     Autopalya();
     Autopalya(int hossz, int autok);

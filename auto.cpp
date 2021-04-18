@@ -21,7 +21,7 @@ Auto::Auto(bool allo): seb(allo ? 0 : max_seb/2), voltmar(false) {}
 /**
  * A feladatkiírásban megadott első három lépést végzi el, vagyis beállítja az autó új sebességét.
  * Végül megváltoztatja az autó állapotát arra, hogy már volt ebben a ciklusban.
- * Ha a MYTEST makró definiálva van, a 3. lépést (véletlenszerű lassulás) kihagyja.
+ * Ha a CPORTA makró definiálva van, a 3. lépést (véletlenszerű lassulás) kihagyja.
  * @param kovi_auto Hány üres cella van a következő autó előtt, azaz mennyi lehet az autó maximális sebessége a függvény végén.
  * @return Az autó új sebessége (ennyi cellát kell előre mozgatni)
  */
@@ -32,7 +32,7 @@ int Auto::sebesseg_valtozas(int kovi_auto) {
     if (kovi_auto < seb) {
         seb = kovi_auto;
     }
-#ifndef MYTEST
+#ifndef CPORTA
     if ((std::rand() % 100) < lassulas_esely && seb > 0) {
         seb--;
     }

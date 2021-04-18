@@ -3,6 +3,11 @@ cmake-build-wsl/
 latex/
 .idea/
 Doxyfile
+input.txt
+memtrace.h
+memtrace.cpp
+kesz.zip
+CMakeLists.txt
 
 # Prerequisites
 *.d

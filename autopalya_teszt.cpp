@@ -2,7 +2,12 @@
 #include "autopalya_teszt.h"
 #include "autopalya.h"
 
-#ifdef MYTEST
+/*! @file autopalya_teszt.cpp
+ * \brief gtest_lite.h segítségével írt tesztek a programhoz.
+ * A CPORTA makró definiálása (projekt szinten) esetén futnak le.
+ */
+
+#ifdef CPORTA
 void autopalya_teszt() {
     TEST(Auto_tarolo, konstruktor_megminden) {
         Auto_tarolo a1;
@@ -43,8 +48,7 @@ void autopalya_teszt() {
         EXPECT_TRUE(a2.volt_mar()) << "Nem jegyzte fel a program, hogy foglakozott az autoval!" << std::endl;
     } END
 
-    TEST(Autopalya, kivetelek) {
-        EXPECT_THROW(Autopalya a(2, 5), std::invalid_argument) << "Ket parameteres konstruktor nem dob kivetelt!" << std::endl;
+    TEST(Autopalya, parameter_nelkuli_konstruktorral) {
         Autopalya a;
         EXPECT_NO_THROW(a.hossz_valtozas(10)) << "Parameter nelkuli kondtruktor utan nem jo a manualis hosszvaltoztatas!" << std::endl;
         EXPECT_NO_THROW(a.autok_valtozas(7)) << "Parameter nelkuli kondtruktor utan nem jo a manualis autovaltoztatas!" << std::endl;
@@ -52,6 +56,11 @@ void autopalya_teszt() {
         EXPECT_THROW(a.hossz_valtozas(5), std::invalid_argument) << "Manualis hosszvaltoztatas nem dob kivetelt!" << std::endl;
         EXPECT_THROW(a.autok_valtozas(15), std::invalid_argument) << "Manualis autovaltoztatas nem dob kivetelt!" << std::endl;
 
+    } END
+
+    TEST(Autopalya, ketparameteres_konstruktorral) {
+        EXPECT_THROW(Autopalya a(2, 5), std::invalid_argument) << "Ket parameteres konstruktor nem dob kivetelt!" << std::endl;
+        EXPECT_NO_THROW(Autopalya a(10, 5)) << "Konstruktor kivetelt dob helyes parameterekre!" << std::endl;
     } END
 }
 #endif

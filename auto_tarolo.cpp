@@ -1,5 +1,5 @@
 #include "auto_tarolo.h"
-#ifndef MYTEST
+#ifndef CPORTA
 #include <cstdlib>
 #include <ctime>
 #endif
@@ -27,17 +27,6 @@ Auto_tarolo::~Auto_tarolo() {
         delete autok[i];
     }
     delete[] autok;
-}
-
-/**
- * A tömb minden autóját visszaállítja abba az állapotba, hogy lehessen rajtuk a ciklust végezni.
- */
-void Auto_tarolo::autok_visszaallit() const {
-    for (int i = 0; i < hossz; i++) {
-        if (autok[i] != NULL) {
-            autok[i]->megvolt();
-        }
-    }
 }
 
 /**
@@ -100,18 +89,21 @@ void Auto_tarolo::hossz_csokken(int torlendo_cellak) {
     autok_no(visszaallitando_auto);
 }
 
+
 /**
  * Generikus rendező algoritmus által használt összehasonlító függvény.
- * Két int-et hasonlít, mövekvő sorrendben.
+ * Két int-et hasonlít, növekvő sorrendben.
  * @param p1
  * @param p2
  * @return
  */
+#ifndef CPORTA
 int int_hasonlit(const void* p1, const void* p2) {
     if (*(int*)p1 > *(int*)p2) return 1;
     if (*(int*)p1 == *(int*)p2) return 0;
     return -1;
 }
+#endif
 
 /**
  * A paraméterben kapott értékkel megnöveli a rendszerben lévő autók számát.
@@ -123,7 +115,7 @@ int int_hasonlit(const void* p1, const void* p2) {
  */
 void Auto_tarolo::autok_no(int uj_autok) {
     bool allo = autok_szama == 0;
-#ifndef MYTEST
+#ifndef CPORTA
     int *permutacio = fisher_yates(hossz - autok_szama);
     qsort(permutacio, uj_autok, sizeof(int), int_hasonlit);
 
@@ -156,7 +148,7 @@ void Auto_tarolo::autok_no(int uj_autok) {
  * @param torlendo_autok Ennyi autót töröl a rendszerből.
  */
 void Auto_tarolo::autok_csokken(int torlendo_autok) {
-#ifndef MYTEST
+#ifndef CPORTA
     int *permutacio = fisher_yates(autok_szama);
     qsort(permutacio, torlendo_autok, sizeof(int), int_hasonlit);
 
@@ -207,7 +199,7 @@ void Auto_tarolo::rajzol() const {
     }
     std::cout << std::endl;
 }
-#ifndef MYTEST
+#ifndef CPORTA
 /**
  * hossz hosszúságú int tömböt foglal, és feltölti számokkal 0-tól hossz-1-ig,
  * majd a Fisher-Yates algoritmus szerint véletlenszerűen összekeveri az elemeket.
